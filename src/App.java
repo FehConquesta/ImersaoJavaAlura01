@@ -2,7 +2,6 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandler;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.List;
 import java.util.Map;
@@ -24,15 +23,19 @@ public class App {
         var parser = new JsonParser();
         List<Map<String, String>> listaDeFilmes = parser.parse(body);
 
+        System.out.println("TOP 10 melhores filmes de acordo com o IMDB\n");
+        int cont = 1;
+
         
 
         // exibir e manipular os dados
         for (Map<String,String> filme : listaDeFilmes) {
-            System.out.println("\u001b[1mFilme: "+filme.get("title"));
-            System.out.println(filme.get("image"));
-            System.out.println(filme.get("imDbRating"));
-            System.out.println("");
             
+            System.out.println(cont +" Filme: "+filme.get("title"));
+            System.out.println("URL Imagem: "+filme.get("image"));
+            System.out.println("Nota: "+filme.get("imDbRating"));
+            System.out.println("⭐");
+            cont ++;
 
             
         }
